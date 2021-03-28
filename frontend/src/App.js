@@ -9,18 +9,18 @@ import Profile from "./components/profile/Profile";
 import actions from "./api/index";
 import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 const App = () => {
-  
+
   let [user, setUser] = useState(null)
 
   useEffect(() => {
     async function getUser() {
       let user = await actions.getUser();
-      console.log('user is',user)
+      console.log('user is', user)
       setUser(user?.data)
     }
-    getUser();    
+    getUser();
   }, [])
 
   const logOut = async () => {
@@ -31,7 +31,7 @@ const App = () => {
   const history = useHistory();
 
 
-  return(
+  return (
     <TheContext.Provider value={{ history, user, setUser }}>
 
       {user?.email}
@@ -45,7 +45,7 @@ const App = () => {
             </NavLink>
             <NavLink to="/profile">Profile</NavLink>
           </Fragment>
-          ) : (
+        ) : (
           <Fragment>
             <NavLink to="/sign-up">Sign Up</NavLink>
             <NavLink to="/log-in">Log In</NavLink>
@@ -79,7 +79,7 @@ const App = () => {
 
     </TheContext.Provider>
 
-  )
 
+  )
 }
 export default App;
